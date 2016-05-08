@@ -1,0 +1,17 @@
+extends layout
+
+append css
+    link(rel='stylesheet', href='/css/login.css')
+
+    block content
+    .container
+      form.form-signin(method="post",action="register")
+        h2.form-signin-heading Mind
+        label.sr-only(for='inputEmail') 邮箱
+        input#inputEmail.form-control(name='email',type='email', placeholder='Email address', required='', autofocus='')
+        label.sr-only(for='inputPassword') 密码
+        input#inputPassword.form-control(name='password',type='password', placeholder='Password', required='')
+        label.sr-only(for='inputPassword') 确认密码
+        input#inputPassword.form-control(name='confirmPassword',type='password', placeholder='confirmPassword', required='')
+        button.btn.btn-lg.btn-primary.btn-block(type='submit') 注册
+    // /container
