@@ -1,0 +1,20 @@
+extends ../main_layout
+
+append css
+    link(rel='stylesheet', href='/css/group/add.css')
+
+block content
+  .container
+    <h2>添加小组</h2>
+    form.form-horizontal(method='post',action='/group/add')
+      .form-group
+        label.col-sm-2.control-label(for='') 名字
+        .col-sm-10
+          input.form-control(type='text', placeholder='名字',name='name')
+      .form-group
+        label.col-sm-2.control-label() 描述
+        .col-sm-10
+          textarea.form-control(rows='20',name='description')
+      .form-group
+        .col-sm-9
+          input.btn.btn-default.btn-info(type='submit', value='Submit')

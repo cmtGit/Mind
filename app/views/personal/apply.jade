@@ -1,0 +1,15 @@
+extends layout
+
+block mainContent
+  .container-fluid.main-content
+    .row
+      .col-md-12
+        .thumbnail
+          if applies.length > 0
+            .list-group
+              each apply in applies
+                a.list-group-item(href='/apply/detail/apply/'+apply._id)
+                  h4.list-group-item-heading= apply.user.userName
+                  p.list-group-item-text= apply.note
+
+        

@@ -1,0 +1,17 @@
+extends layout
+
+block mainContent
+  .container-fluid.main-content
+    .row
+      .col-md-12
+        .thumbnail
+          if applies.length > 0
+            .list-group
+              each apply in applies
+                if apply.group
+                  a.list-group-item(href='/apply/detail/my_apply/'+apply._id)
+                    h4.list-group-item-heading= apply.group.name
+                    p.list-group-item-text= apply.note
+                else
+                  a.list-group-item(href='')
+                    p.list-group-item-text 该小组已被删除

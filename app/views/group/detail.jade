@@ -1,0 +1,61 @@
+extends ../main_layout
+
+append css
+    link(rel='stylesheet', href='/css/group/detail.css')
+
+block content
+  .container-fluid.content
+    .row
+      .col-md-8
+        h3=group.name  
+          small=group.creator.userName
+      if group.creator.userName != user.userName
+        .col-md-4.action
+          button#btn-follow.btn.btn-primary(type="button") 
+            span.glyphicon.glyphicon-plus  关注
+          button#btn-cancel.btn.btn-warning(type="button") 
+            span.glyphicon.glyphicon-remove  取消关注
+          button#btn-apply.btn.btn-info(type="button",data-toggle="modal",data-target="#myModal") 
+            span.glyphicon.glyphicon-envelope  申请加入
+      .col-md-12
+        p
+          =group.description
+      .col-md-12.commentform
+        form.form-horizontal(method='post',action='/user/comment/add')
+          .form-group
+            .col-sm-12
+              input#type.form-control(type='hidden',name='type',value='group')
+              input#source.form-control(type='hidden',name='source',value='' + group._id)
+              textarea#content.form-control(rows='3', name='content')
+          .form-group
+            .col-sm-offset-11.col-sm-12
+              button#commment-submit.btn.btn-default.btn-warning(type='button') 发表
+      .col-md-12.comments
+      
+  .container-fluid
+    // Modal
+    #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel')
+      .modal-dialog(role='document')
+        .modal-content
+          form(method='post',action='/apply/add')
+            .modal-header
+              button.close(type='button', data-dismiss='modal', aria-label='Close')
+                span(aria-hidden='true') ×
+              h4#myModalLabel.modal-title=group.name
+            .modal-body
+                .form-group
+                  label 理由
+                  textarea#note.form-control(rows='3',name='note')
+                  input#group_id(type='hidden', name= 'group_id',value='' + group._id)
+            .modal-footer
+              button.btn.btn-default(type='button', data-dismiss='modal') 关闭
+              button#btn-apply-submmit.btn.btn-default.btn-primary(type='button') 提交
+    
+
+block scripts
+  script(src='/components/bootstrap/js/modal.js')
+  script(src='/js/personal/main.js')
+  script(src='/js/comment/comment.js')
+  script(src='/js/group/detail.js')
+
+    

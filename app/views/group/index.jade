@@ -1,0 +1,41 @@
+extends ../main_layout
+
+append css
+    link(rel='stylesheet', href='/css/group/index.css')
+
+block content
+  .container
+    .row
+      .col-md-12.content
+        each group in groups   
+          .col-sm-6.col-md-4
+            a(href='/group/detail/' + group._id)
+              .thumbnail
+                .caption  
+                  .header
+                    h3=truncate(group.name ,4)
+                      small by
+                      small=group.creator.userName
+                  .body
+                    p=truncate(group.description,20)
+                  .action
+                    p
+                      small
+                        =moment(group.created).format('YYYY-MM-DD')
+                      small
+                        span.glyphicon.glyphicon-thumbs-up(aria-hidden='true')
+                      small
+                        span.glyphicon.glyphicon-comment(aria-hidden='true')
+      //- .col-md-3.sidebar
+      //-   .thumbnail
+      //-     h5 最新小组
+      //-     ul.nav.nav-pills.nav-stacked
+      //-       li
+      //-         a(href='/user') sdfasdf
+      //-       li
+      //-         a(href='/user') sdfasdf
+
+
+
+
+

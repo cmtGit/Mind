@@ -1,0 +1,76 @@
+extends layout
+
+append css
+    link(rel='stylesheet', href='/css/personal/my_information.css')
+    link(rel='stylesheet', href='/components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css')
+
+
+block mainContent
+  .container-fluid.main-content
+    .row
+      .col-md-12
+        .panel.panel-default
+          .panel-heading
+            h3.panel-title 基本资料
+          .panel-body
+            .media
+              .media-left
+                a(href='#')
+                  img.img-circle(src='http://cdn.aixifan.com/dotnet/20120923/style/image/avatar.jpg', alt='...')
+              .media-body
+                h4.media-heading=user.userName
+                small='注册于' + moment(user.created).format('YYYY-MM-DD hh:mm:ss')
+                if user.profile
+                  p=user.profile
+                else 
+                  p 这个人很懒，什么都没有写…
+          .panel-footer
+            .action
+              button#changePassword.btn.btn-primary(type='button')
+                span.glyphicon.glyphicon-pencil
+                ='修改密码'
+
+
+      .col-md-12
+        .panel.panel-default
+          .panel-heading
+            h3.panel-title 扩展资料
+          .panel-body
+            form.form-horizontal(method='post',action='/user/edit')
+              .form-group
+                label.col-sm-2.control-label(for='inputEmail3') 性别
+                .col-sm-10
+                  select(name='sex')
+                    if user.sex == 1
+                      option(value='1',selected = "selected") 男
+                      option(value='0') 女
+                    else
+                      option(value='0',selected = "selected") 女
+                      option(value='1') 男
+
+              .form-group
+                label.col-sm-2.control-label(for='inputEmail3') 邮箱
+                .col-sm-10
+                  =user.email
+              .form-group
+                label.col-sm-2.control-label(for='inputEmail3') 所处行业
+                .col-sm-10
+                  if user.industry
+                    input.form-control(type='text', placeholder='Text input', name='industry',value='' + user.industry)
+                  else
+                    input.form-control(type='text', placeholder='Text input', name='industry')
+              .form-group
+                label.col-sm-2.control-label(for='inputEmail3') 出生日期
+                .col-sm-10
+                  input#datetimepicker.form-control(type='text', placeholder='Text input', name='birthdate',data-date-format="yyyy-mm-dd",value='' + moment(user.birthdate).format('YYYY-MM-DD'))
+              .form-group
+                label.col-sm-2.control-label(for='inputEmail3') 个人简介
+                .col-sm-10
+                  textarea.form-control(rows='3', name='profile')=user.profile
+              .form-group
+                .col-sm-offset-2.col-sm-10
+                  button.btn.btn-default(type='submit') 提交修改
+block detailScripts
+  script(src='/components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js')
+  script(src='/js/personal/my_information.js')
+

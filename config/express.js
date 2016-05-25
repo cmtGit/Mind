@@ -21,6 +21,10 @@ var MongoStore = require('connect-mongo')(session);
 var mongoose = require('mongoose'),
   User = mongoose.model('User');
 
+var truncate = require('truncate');
+
+var moment = require('moment');
+
 module.exports = function(app, config, connection) {
   var env = process.env.NODE_ENV || 'development';
   app.locals.ENV = env;
@@ -60,6 +64,14 @@ module.exports = function(app, config, connection) {
       next();
     }
   });
+
+  app.use(function (req, res, next){
+    res.locals.user = req.user;
+    res.locals.moment = moment;
+    res.locals.truncate = truncate;
+    next();
+  });
+
   app.use(compress());
   app.use(express.static(config.root + '/public'));
   app.use(methodOverride());
@@ -73,12 +85,6 @@ module.exports = function(app, config, connection) {
     var err = new Error('Not Found');
     err.status = 404;
     next(err);
-  });
-
-  app.use(function (req, res, next){
-    res.locals.message = message(req, res);
-    res.locals.user = req.user;
-    next();
   });
   
   if(app.get('env') === 'development'){

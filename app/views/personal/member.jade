@@ -1,0 +1,15 @@
+extends layout
+
+block mainContent
+  .container-fluid.main-content
+    .row
+      .col-md-12
+        .thumbnail
+          if members.length > 0
+             each member in members
+              if member.group
+                a.list-group-item(href='/group/detail/' + member.group._id)
+                    h4.list-group-item-heading= member.group.name
+                    p.list-group-item-text= truncate(member.group.description,20)
+              else
+                .alert.alert-success(role="alert") 当前没有任何关注的内容

@@ -5,6 +5,7 @@ var InformSchema = new Schema({
   title: { type: String, required: true},
   content: { type: String, required: true},
   type: { type: Number, required: true, default: 0},
+  url: { type: String},
   created: { type: Date, default: Date.now}
 });
 

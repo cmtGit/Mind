@@ -17,8 +17,13 @@ models.forEach(function (model) {
 });
 var app = express();
 
+//socketIO
+/*var http = require('http').createServer(app);
+var io = require('socket.io').listen(http);*/
+
 require('./config/express')(app, config, db);
 require('./config/passport').init();
+//require('./config/socketIO')(io);
 
 app.listen(config.port, function () {
   console.log('Express server listening on port ' + config.port);

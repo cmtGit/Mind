@@ -1,0 +1,20 @@
+extends layout
+
+block mainContent
+  .container-fluid.main-content
+    .row
+      .col-md-12
+        .thumbnail
+          if follows.length > 0
+            .list-group
+              each follow in follows
+                if follow.group
+                  a.list-group-item(href='/group/detail/' + follow.group._id)
+                    h4.list-group-item-heading= follow.group.name
+                    p.list-group-item-text= truncate(follow.group.description,20)
+          else
+            .alert.alert-success(role="alert") 当前没有任何关注的内容
+
+
+
+

@@ -1,0 +1,103 @@
+extends ../main_layout
+
+append css
+    link(rel='stylesheet', href='/css/personal/main.css')
+
+block content
+  .container-fluid
+    .row
+      .col-md-12
+        block littleheader
+      .col-md-3
+        block sidebar
+          .row
+            .col-md-12
+              .thumbnail
+                img.img-circle(src='http://cdn.aixifan.com/dotnet/20120923/style/image/avatar.jpg', alt='...')
+                .caption
+                    h3.text-center=user.userName
+                    if user.profile
+                      p.text-center=user.profile
+                    else
+                      p.text-center 这个人很懒，什么都没有写…
+              .thumbnail
+                .caption
+                  p sdklfjlj
+
+            .col-md-12
+              .thumbnail
+                ul.nav.nav-pills.nav-stacked(role="navigation")
+                  if pagePaper == 'information'
+                    li.active(role="presentation")
+                      a(href='/user')
+                        span.glyphicon.glyphicon-home
+                        ='个人资料'
+                  else
+                    li(role="presentation")
+                      a(href='/user')
+                        span.glyphicon.glyphicon-home
+                        ='个人资料'
+                  if pagePaper == 'follow'
+                    li.active
+                      a(href='/follow/') 
+                        span.glyphicon.glyphicon-user(aria-hidden="true") 
+                        ='关注中心'
+                  else
+                    li
+                      a(href='/follow/') 
+                        span.glyphicon.glyphicon-user(aria-hidden="true") 
+                        ='关注中心'
+                  if pagePaper == 'group'
+                    li.active(role="presentation")
+                      a(href='/group/personal')
+                        span.glyphicon.glyphicon-file
+                        ='我的小组'
+                  else
+                    li(role="presentation")
+                      a(href='/group/personal')
+                        span.glyphicon.glyphicon-file
+                        ='我的小组'
+                  if pagePaper == 'member'
+                    li.active(role="presentation")
+                      a(href='/member')
+                        span.glyphicon.glyphicon-tasks
+                        ='我的参与'
+                  else
+                    li(role="presentation")
+                      a(href='/member')
+                        span.glyphicon.glyphicon-tasks
+                        ='我的参与'
+                  if pagePaper == 'apply'
+                    li.active(role="presentation")
+                      a(href='/apply/to')
+                        span.glyphicon.glyphicon-envelope
+                        ='我的消息'
+                        span#news.badge
+                  else
+                    li(role="presentation")
+                      a(href='/apply/to')
+                        span.glyphicon.glyphicon-envelope
+                        ='我的消息'
+                        span#news.badge
+                  if pagePaper == 'my_apply'
+                    li.active(role="presentation")
+                        a(href='/apply')
+                          span.glyphicon.glyphicon-list-alt
+                          ='我的申请'
+                  else
+                    li(role="presentation")
+                        a(href='/apply')
+                          span.glyphicon.glyphicon-list-alt
+                          ='我的申请'
+      .col-md-9
+        block mainContent
+block scripts
+  block layoutScripts
+    script(src='/js/apply/remind.js')
+  block detailScripts
+
+
+      
+
+
+      

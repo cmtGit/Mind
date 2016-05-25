@@ -1,0 +1,29 @@
+.media-body p {
+  margin-top: 5px;
+  border-style: dashed none none none;
+  border-width: 0.5px;
+  padding-top: 5px;
+  border-color: #eee;
+}
+
+.media-body {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.panel-footer {
+  background-color: #fff;
+  border-style: dashed none none none;
+}
+
+/*#changePassword {
+  float: right;
+}*/
+
+button span {
+  margin-right: 10px;
+}
+
+.panel-body form {
+  margin-left: -45px;
+}

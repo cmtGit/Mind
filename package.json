@@ -19,11 +19,14 @@
     "jade": "^1.11.0",
     "md5": "^2.1.0",
     "method-override": "^2.3.0",
+    "moment": "^2.13.0",
     "mongoose": "^4.1.2",
     "morgan": "^1.6.1",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "serve-favicon": "^2.3.0"
+    "serve-favicon": "^2.3.0",
+    "socket.io": "^1.4.6",
+    "truncate": "^2.0.0"
   },
   "devDependencies": {
     "gulp": "^3.9.0",

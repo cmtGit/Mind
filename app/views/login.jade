@@ -5,16 +5,25 @@ append css
 
     block content
     .container
-      form.form-signin(method="post",action="login")
+      form.form-signin(method="post",action="/login")
         h2.form-signin-heading Mind
         label.sr-only(for='inputEmail') 邮箱
         input#inputEmail.form-control(name='username',type='email', placeholder='Email address', required='', autofocus='')
         label.sr-only(for='inputPassword') 密码
         input#inputPassword.form-control(name='password',type='password', placeholder='Password', required='')
-        .checkbox
-          label
-            input(type='checkbox', value='remember-me')
-            |  Remember me
+        //- .checkbox
+        //-   label
+        //-     input(type='checkbox', value='remember-me')
+        //-     |  Remember me
+        .register
+            small 
+                a(href='/register') 还没账号吗？现在注册>>
+
         button.btn.btn-lg.btn-primary.btn-block(type='submit') 登陆
     // /container
+    block scripts
+      //- script(src="https://cdn.socket.io/socket.io-1.4.5.js")
+      //- script(src="js/socketIO.js")
+
+
 

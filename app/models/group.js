@@ -7,7 +7,6 @@ var GroupSchema = new Schema({
   creator: { type: Schema.Types.ObjectId, required: true, ref: 'User'},
   created: { type: Date, default: Date.now},
   fever: { type: Number, default: 0},
-  comment: [Schema.Types.Mixed],
   share: { type: Number, default: 0},
   follow: { type: Number, default: 0}
 });

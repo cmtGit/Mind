@@ -1,0 +1,42 @@
+.jumbotron {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+small {
+  margin-left: 5px;
+}
+
+.content .thumbnail {
+  margin-top: 15px;
+}
+
+.thumbnail .caption {
+  width: 250px;
+  height: 164px;
+} 
+
+.action {
+  border-style: dashed none none none;
+  border-width: 0.5px;
+  padding-top: 5px;
+  border-color: #eee;
+}
+
+.body {
+  height: 60px;
+}
+
+.content {
+  background-color: #eee;
+}
+
+.sidebar{
+  margin-top: 10px;
+}
+
+.thumbnail h5 {
+  border-style: none none none dashed;
+  border-width: 0.5px;
+  border-color: #eee;
+}
+

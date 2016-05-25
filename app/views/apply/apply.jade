@@ -1,0 +1,29 @@
+extends ../main_layout
+
+block content
+  .container
+    .row
+      .col-md-12
+        .page-header
+          h3=apply.group.name
+            smal=apply.user.userName
+        .jumbotron
+          p=apply.note
+      .col-md-12
+        form#form.form-horizontal(method='post',action='/apply/check')
+          .form-group
+            .col-sm-12
+              input.form-control(type='hidden',name='id',value='' + apply._id)
+              input#result.form-control(type='hidden',name='result')
+              textarea.form-control(rows='3', name='reason')=apply.reason
+          .form-group
+            .col-sm-offset-10.col-sm-12
+              if !apply.result
+                button#allow.btn.btn-default.btn-warning(type='button') 通过申请
+                button#reject.btn.btn-default.btn-danger(type='button') 驳回申请
+              else if apply.result == 'allow'
+                button.btn.btn-default.btn-warning(type='button') 已通过申请
+              else 
+                button.btn.btn-default.btn-danger(type='button') 已驳回申请
+block scripts
+  script(src='/js/apply/apply.js')

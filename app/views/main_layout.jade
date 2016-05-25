@@ -1,0 +1,43 @@
+extends layout
+
+block main
+  .container.container-form
+    block header
+      nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse
+        .container-fluid
+          .navbar-header
+            a.navbar-brand(href='/group') Mind
+          #bs-example-navbar-collapse-1.collapse.navbar-collapse 
+            ul.nav.navbar-nav
+              if nav == 'home'
+                li.active
+                  a(href='/group') 首页
+              else
+                li
+                  a(href='/group') 首页
+              if nav == 'about'
+                li.active
+                  a(href='/about') 关于
+              else
+                li
+                  a(href='/about') 关于
+              if nav == 'contact'
+                li.active
+                  a(href='/contact') 联系我们
+              else
+                li
+                  a(href='/contact') 联系我们
+            ul.nav.navbar-nav.navbar-right
+              if user
+                li
+                  a(href="/user")= user.userName
+                li
+                  a(href="/logout") 注销
+              else
+                li
+                  button#btn-login.btn.btn-default.navbar-btn(type='button')
+                   a(href="/login") 登 陆
+    block content
+
+    block footer
+

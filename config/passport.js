@@ -2,8 +2,7 @@ var passport = require('passport');
 
 var LocalStrategy = require('passport-local').Strategy;
 
-var mongoose = require('mongoose'),
-    User = mongoose.model('User');
+var User = require('../app/models/user.js');
 
 module.exports.init = function(){
   passport.use(new LocalStrategy(
@@ -22,7 +21,6 @@ module.exports.init = function(){
         if (!user.verifyPassword(password)) { 
           return done(null, false); 
         }
-        console.log(username);
         return done(null, user);
       });
     }

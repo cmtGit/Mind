@@ -13,8 +13,16 @@ router.get('/', function (req, res, next) {
 });
 
 router.get('/about', function (req, res, next) {
-    res.render('mind/index', {
-      
+    res.render('about', {
+      nav: 'about',
+      title: '关于'
+    });
+});
+
+router.get('/contact', function (req, res, next) {
+    res.render('contact', {
+      nav: 'contact',
+      title: '联系我们'
     });
 });
 
